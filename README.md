@@ -6,4 +6,8 @@
 
 ## HTML5
 
-<a href="https://github.com/haoxunba/knowledge/issues/1">html5基本知识(未完待续)</a> 
+[html5基本知识(未完待续)](https://github.com/haoxunba/knowledge/issues/1) 
+
+## jQuery
+
+[jquery基础知识 未完待续](https://github.com/haoxunba/knowledge/issues/2)
