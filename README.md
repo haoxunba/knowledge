@@ -11,3 +11,5 @@
 ## jQuery
 
 [jquery基础知识 未完待续](https://github.com/haoxunba/knowledge/issues/2)
+
+## Javascript整体认知
