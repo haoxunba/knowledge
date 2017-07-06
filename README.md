@@ -16,5 +16,5 @@
 
 [运算符](https://github.com/haoxunba/knowledge/issues/3)
 
-## jQuery源码系列
+## jQuery源码
 
