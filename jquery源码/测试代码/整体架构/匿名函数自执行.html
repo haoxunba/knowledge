@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>匿名函数自执行</title>
+</head>
+<body>
+    <script>
+        (function() {
+    
+          var a = 10;
+  
+          function $() {
+            console.log(a);
+        }
+  
+        window.$ = $; // 将内部的变量挂载到window，使外面也可以访问
+        })()
+
+        $();
+
+        // 演绎 模仿jquery3
+
+        // 如果添加一个判断条件来判断匿名函数是否执行
+
+        (function(fn) {
+        
+            if(true) {
+                fn()
+            }
+        })(function() {
+
+            console.log('原来的匿名函数执行主体部分');
+        })
+
+        
+    </script>
+</body>
+</html>
