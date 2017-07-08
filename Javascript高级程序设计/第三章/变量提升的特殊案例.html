@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>变量提升</title>
+</head>
+<body>
+    <script>
+        // 变量名和函数名同名
+        // console.log(typeof a);
+
+        // var a = '';
+        
+        // console.log(typeof a);
+
+        // function a() {
+            
+        // }
+
+        // console.log(typeof a);
+
+        
+        // 变量名和函数名同名（函数写在上面）
+        // console.log(typeof a);
+
+        // function a() { }
+
+        // console.log(typeof a);
+
+        // var a = '';
+
+        // console.log(typeof a);
+
+        // 变量名同名之一般变量
+
+        // console.log(typeof a);
+
+        // var a = 'abc';
+
+        // console.log(a);
+
+        // var a = 1;
+
+        // console.log(a);
+
+        // 变量名同名之函数名同名
+
+        // fn();
+
+        // function fn() {
+
+        //     console.log('写在上面的');
+        // }
+
+        // function fn() {
+
+        //     console.log('写在下面的');
+        // } 
+
+        // 分段的变量提升第一部分
+
+        // var a = '上面的段';
+
+        // console.log(b);
+
+        // 条件式函数声明
+
+        fn();
+
+        if(true) {
+            function fn() {
+                console.log('条件式');
+            }
+        }
+
+    </script>
+    <!--<script>
+        分段变量提升第二部分
+        var b ='下面的段';
+        console.log(a);
+    </script>   -->
+</body>
+</html>
