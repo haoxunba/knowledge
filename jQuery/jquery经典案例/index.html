@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="checkDemo.css"/>
+    <script src="../jquery-1.11.1.min.js"></script>
+    <script>
+        $(function () {
+            //功能1，点击添加数据按钮，让mask和form显示
+            $("#j_btnAddData").click(function () {
+                $("#j_mask,#j_formAdd").show();
+            })
+            //功能2 点击X让他们隐藏
+            $("#j_hideFormAdd").click(function () {
+                hideVal();
+            })
+            //功能3.点击form里的添加按钮，让输入的数据在表格中显示
+            $("#j_btnAdd").click(function () {
+                var txtLesson= $("#j_txtLesson").val();
+                var txtBelSch=$("#j_txtBelSch").val();
+                if(txtLesson===""){
+                    alert("弄啥嘞");
+                    return;
+                }
+
+                if(txtBelSch===""){
+                    alert("请输入");
+                    return;
+                }
+
+                var str='<tr>'
+                        +'<td>'+txtLesson+'</td>'
+                        +'<td>'+txtBelSch+'</td>'
+                        +'<td><a href="javascrip:;" class="get">GET</a></td>'
+                        +'</tr>';
+                $("#j_tb").append(str);
+
+                hideVal();
+
+
+            })
+            //功能4，点击每行里面的a标签，删除本行
+            //这里不能不能用$("tr"),为什么呢？tr是新创建出来的？
+            //另一种办法就是在新创建的元素过程中添加点击事件onclick='delData(this)'这里需要封装下面的函数
+            $("#j_tb").on("click","a.get", function () {
+                $(this).parent("td").parent("tr").remove();
+            })
+
+
+
+            function hideVal(){
+                $("#j_mask,#j_formAdd").hide();
+                $("#j_txtLesson").val("");
+                $("#j_txtBelSch").val("传智播客-前端与移动开发学院");
+            }
+
+
+
+
+        })
+
+    </script>
+</head>
+
+<body>
+<div class="wrap">
+    <div>
+        <input type="button" value="添加数据" id="j_btnAddData" class="btnAdd"/>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>课程名称</th>
+            <th>所属学院</th>
+            <th>已学会</th>
+        </tr>
+        </thead>
+        <tbody id="j_tb">
+            <tr>
+                <td>JavaScript</td>
+                <td>传智播客-前端与移动开发学院</td>
+                <td><a href="javascrip:;" class="get">GET</a></td>
+            </tr>
+            <tr>
+                <td>css</td>
+                <td>传智播客-前端与移动开发学院</td>
+                <td><a href="javascrip:;" class="get">GET</a></td>
+            </tr>
+            <tr>
+                <td>html</td>
+                <td>传智播客-前端与移动开发学院</td>
+                <td><a href="javascrip:;" class="get">GET</a></td>
+            </tr>
+            <tr>
+                <td>jQuery</td>
+                <td>传智播客-前端与移动开发学院</td>
+                <td><a href="javascrip:;" class="get">GET</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="j_mask" class="mask"></div>
+<div id="j_formAdd" class="form-add">
+    <div class="form-add-title">
+        <span>添加数据</span>
+
+        <div id="j_hideFormAdd">x</div>
+    </div>
+    <div class="form-item">
+        <label class="lb" for="j_txtLesson">课程名称：</label>
+        <input class="txt" type="text" id="j_txtLesson" placeholder="请输入课程名称">
+    </div>
+    <div class="form-item">
+        <label class="lb" for="j_txtBelSch">所属学院：</label>
+        <input class="txt" type="text" id="j_txtBelSch" value="传智播客-前端与移动开发学院">
+    </div>
+    <div class="form-submit">
+        <input type="button" value="添加" id="j_btnAdd">
+    </div>
+</div>
+</body>
+
+</html>

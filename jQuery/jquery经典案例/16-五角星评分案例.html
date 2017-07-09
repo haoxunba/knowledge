@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .comment {
+        font-size: 40px;
+        color: teal;
+    }
+    
+    .comment li {
+        float: left;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+    $(function() {
+        var wjx_none = '☆', // 空心五角星
+            wjx_sel = '★'; // 实心五角星
+
+        // index 用来记录点击了哪一个元素
+        var index = -1;
+
+        // 设置五角星是通过 text() 方法来设置的文本内容
+        // 1 让当前的五角星以及以前的所有的五角星都变为 实心
+        // .prev() 获取当前元素的前面一个元素
+        // .next() 获取当前元素的后面一个元素
+        // 
+        // .prevAll() 获取当前元素的前面所有的元素
+        // .nextAll() 获取当前元素的后面所有的元素
+
+        // 1 通过on来给li绑定了事件
+        $(".comment").on("mouseenter", "li", function() {
+        	// console.log(1);
+        	// this 就是 li 元素
+        	// 1.1 让当前元素变为实心五角星
+        	// 1.2 让当前元素之前的所有元素变为实心五角星
+        	// 1.3 让当前元素之后的所有元素变为空心五角星
+        	$(this).text(wjx_sel);
+        	$(this).prevAll().text(wjx_sel);
+        	$(this).nextAll().text(wjx_none);
+        });
+
+        // 2 鼠标离开ul的时候，将所有的li设置为空心五角星
+        $(".comment").on("mouseleave", function() {
+        	// this 就是 ul 元素
+        	// 先将所有的元素全部设置为 空心的，然后，在将具有 clicked 类的元素
+        	// 以及之前的所有元素设置为：实心的
+        	$(this).children("li").text(wjx_none);
+        	// $(".clicked").text(wjx_sel).prevAll().text(wjx_sel);
+
+        	// 通过索引号实现
+        	if(index !== -1) {
+        		$(this).children("li").eq(index).text(wjx_sel).prevAll().text(wjx_sel);
+        	}
+        	
+        });
+
+        // 3 难点：确定单击了哪一个元素
+        // 		3.1 记录索引号
+        // 		3.2 添加一个类，这个类的作用：标记
+        $(".comment").on("click", "li", function() {
+        	// 给当前元素添加类, 记录了单击了哪一个元素
+        	// $(this).addClass("clicked").siblings().removeClass("clicked");
+
+        	// 通过索引号实现
+        	index = $(this).index();
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+</body>
+
+</html>
