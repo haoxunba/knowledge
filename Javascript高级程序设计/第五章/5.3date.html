@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.3Date</title>
+</head>
+<body>
+    <script>
+        var time = new Date();
+
+        console.log(time);
+
+        var time1 = Date.now(); // 当前时间毫秒数
+        var time11 = Date.now(2018,7); // 不接收参数
+
+        console.log(time1);
+        console.log('time11', time11);
+
+        var time2 = new Date(2018,7,8,8,8,8); // 调用底层Date.UTC()
+
+        console.log('time2',time2);
+
+        var time3 = Date.UTC(2018,7,8,8,8,8);
+
+        // console.log('time3', time3);
+
+        var time33 = new Date(time3);
+        console.log('time33', time33);
+
+    </script>
+</body>
+</html>

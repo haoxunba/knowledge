@@ -1,0 +1,19 @@
+{
+  "name": "knowledge",
+  "version": "1.0.0",
+  "description": "直播知识，我做网红。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haoxunba/knowledge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haoxunba/knowledge/issues"
+  },
+  "homepage": "https://github.com/haoxunba/knowledge#readme"
+}

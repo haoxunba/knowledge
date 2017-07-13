@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.2数组</title>
+</head>
+<body>
+    <script>
+        var arr0 = [3,1,7,5,11,10];
+
+        var temp = arr0.sort();
+        console.log('temp', temp);
+        console.log('arr0', arr0); // 返回值就是已经排序的arr0
+
+        arr0.sort(function(val1, val2) {
+
+            return val1 - val2;
+        })
+
+        console.log('arr0', arr0);
+
+        var arr1 = ['a','b','c'];
+
+        var temp1 = arr1.concat('def','hijk');
+
+        console.log('arr1', arr1);
+        console.log('temp1', temp1);
+
+        var arr2 = ['a','b','c','d'];
+
+        function fn2(item, index, arr) {
+
+            return item === 'a';
+        }
+
+        console.log(arr2.every(fn2, window));
+        console.log(arr2.some(fn2, window));
+        console.log(arr2.filter(fn2));
+        console.log(arr2.map(fn2));
+
+    </script>
+</body>
+</html>

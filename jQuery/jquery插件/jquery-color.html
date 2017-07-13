@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery-color插件</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+        jquery插件主要弥补jquery动画不能改变背景色,提供一种cssHack
+    </div>
+    <script src="../jquery-3.2.1.js"></script>
+    <script src="./jquery.color.js"></script>
+    <script>
+
+        console.log(jQuery.Color(red, green, blue, alpha));
+        
+        $('div').click(function() {
+            
+            $(this).animate({"backgroundColor": "red"}, 2000);
+
+        })
+    </script>
+</body>
+</html>

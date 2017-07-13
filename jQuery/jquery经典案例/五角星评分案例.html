@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>五角星评分案例</title>
+</head>
+<body>
+    <div>
+        
+    </div>
+    <script src="./jquery-3.2.1.js"></script>
+    <script>
+        
+        function hollow(label, num, mousemove, mouseleave, mouseclick) {
+
+            if(num) {
+                var temp = [], span = '';
+                for(; num !== 0; num-- ){
+                    span = '<span> ☆ </span>';
+                    temp.push(span);
+                }
+                label.html(temp.join(''));
+            }
+            label.on('mouseenter', 'span', mousemove); // 动态生成的标签要用事件委托
+            label.on('mouseleave', 'span', mouseleave);
+            label.on('click', 'span', mouseclick);
+        }
+
+        function mouseMove() {
+            // this代表的是span
+            
+            $(this).html(' ★ ');
+            
+            toggleHollow(this);
+        }
+
+        function mouseLeave() {
+           
+            var hasClick = $(this).parent().children().hasClass('click'); // 隐式迭代 检测每个子节点是否有该类名
+
+            if(hasClick) {
+                var $current = $(this).parent().find('.click');
+                $current.html(' ★ ');
+                toggleHollow($current[0]); // 需要传dom元素
+            }else{
+                $(this).html(' ☆ ').siblings().html(' ☆ ');
+            }
+        }
+
+        function mouseClick() {
+            
+            $(this).addClass('click')
+                    .html(' ★ ')
+                    .siblings()
+                    .removeClass('click'); // 难点 如何标记我点击的是哪个元素
+
+            toggleHollow(this);
+        }
+
+        function toggleHollow(currentEle) {
+            
+            $(currentEle).prevAll().html(' ★ ');
+            $(currentEle).nextAll().html(' ☆ ');
+        }
+
+        hollow($('div'), 5, mouseMove, mouseLeave, mouseClick);
+    </script>
+</body>
+</html>
