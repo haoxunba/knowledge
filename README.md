@@ -14,5 +14,7 @@
 
 [运算符](https://github.com/haoxunba/knowledge/issues/3)
 
-## jQuery源码
+## React
+
+### [高阶组件](https://github.com/haoxunba/knowledge/blob/master/React/Higher-Order-Component.md)
 
