@@ -113,7 +113,7 @@ export default simpleHoc(Usual);
 
 #### 第二种利用ref
 
-  通过ref包装组件获取被包装组件实例,从而可以获取 被包装组件的props和state 
+  包装组件通过ref获取被包装组件实例,从而可以获取 被包装组件的props和state
   注意在hoc里面获取到的props不包括hoc传给wrappedComponent
   ```
   const refHoc = WrappedComponent => class extends Component {
