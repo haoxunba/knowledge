@@ -189,9 +189,24 @@ class Grandparent extends React.Component {
   }
 }
 
+```
 > Note that this approach requires you to add some code to the child component. If you have absolutely no control over the child component implementation, your last option is to use findDOMNode(), but it is discouraged.
 
 ```
+export default class Parent extends React.Component {
+
+  componentDidMount() {
+    console.log(ReactDOM.findDOMNode(this.child))
+  }
+
+  render() {
+    return <Child ref={(child)=>{this.child=child}}/>
+    // return <div ref={(div)=>{this.test=div}}>124</div>
+  }
+}
+```
+
+上面ReactDOM.findDOMNode拿到的是子组件Child render出来的所有DOM元素
 
 
 ## Legacy API: String Refs
