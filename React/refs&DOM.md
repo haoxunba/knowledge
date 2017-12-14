@@ -216,3 +216,44 @@ export default class Parent extends React.Component {
 ```
 
 使用this.refs.input会存在未知的bug，react官网不推荐使用
+
+## 思考
+
+子组件能不能拿到父组件的真实DOM元素
+
+```
+export default class Parent extends React.Component {
+
+  componentDidMount() {
+    console.log(ReactDOM.findDOMNode(this.child))
+    console.log(this.parentRef)
+  }
+
+  render() {
+    return (
+      <div>
+        <div ref={div=>this.parentRef=div}></div>
+        <Child ref={(child)=>{this.child=child}} parentRef = {this.parentRef}/>
+      </div>
+    )
+  }
+}
+
+```
+
+```
+export default class Child extends React.Component {
+
+  render() {
+    console.log(this.props);
+    return <div>这里是测试refs的子组件</div>
+  }
+}
+
+```
+
+子组件打印出来的this.props的值是`{parentRef: undefined}`
+
+考虑到通过ref获取真实dom只能在组件渲染完成后获取，即拿到真实dom的lifesycle只能是在render之后，那么在Parent组件中直接在render周期中向子组件传过去ref，此时ref还没有拿到真实DOM所以是undefined
+
+那有没有其他办法呢

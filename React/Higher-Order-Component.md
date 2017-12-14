@@ -132,8 +132,11 @@ export default simpleHoc(Usual);
   
   export default refHoc; 
   ```
+
+  this.instanceComponent此时就可以获取wrappedComponent的实例，包括props，state，refs等
    
   #### 第三种受控表单
+
   不通过上面的ref方法获取被包装组件实例的state
   考虑到hoc的主要作用就是处理数据，所以有一种情况会用到下面这种方法，就是受控组件
   ```
@@ -340,6 +343,7 @@ class WrappedUsual extends Component {
   }
 }
 ```
+例如上面的案例有可能导致WrappenComponent组件的状态丢失
 
 第六点
 
