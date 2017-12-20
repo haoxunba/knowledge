@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. 工厂模式 缺点不能用instanceof判断对象类型
+    function factory(name, age) {
+      var o  = new Object();
+      o.name = name;
+      o.age = age;
+      o.sayName =  function() {
+        alert(this.name);
+      }
+      return o;
+    }
+
+    var f1 = factory('小小', '1');
+    f1.sayName();
+
+    // 2. 构造函数 类似公用的方法都放在构造函数里面，那么每次实例化的对象就比较臃肿，占用内存较重
+    function F2(name, age) {
+      this.name = name;
+      this.age = age;
+      this.sayName = function() {
+        alert(this.name);
+      }
+    }
+
+    var f2 = new F2('琪琪', '2');
+    f2.sayName();
+
+    // 3. 原型模式 属性值是应用类型时会相互污染
+    function F3() {
+
+    }
+    F3.prototype.name = [1,2,3];
+
+    var f3 = new F3()
+    
+   // 4. 原型和构造函数混合模式 应用最广泛
+   function F4(name) {
+     this.name = name;
+   }
+   F4.prototype.sayName = function() {
+     alert(this.name);
+   }
+   var f4 = new F4('f4');
+   f4.sayName();
+
+   // 5. 动态原型模式
+   function F5(name, age) {
+     this.name = name;
+     this.age = age;
+     if(typeof this.sayName != 'function') {
+       F5.prototype.sayName = function() {
+         alert(this.name);
+       }
+     }
+   }
+
+   var f5 = new F5('f5');
+   f5.sayName();
+
+   // 6. 寄生式构造函数 应用：内置对象最好不要直接在原型上更改方法，用下面这种方式新增方法
+   function F6(name,age) {
+     var o = new Array();
+     Array.prototype.push.apply(o, arguments);
+     o.tans = function() {
+       alert(this.join('|'));
+     }
+     return o;
+   }
+   var f6 = new F6('f6', 'f6');
+   f6.tans();
+
+  
+
+   // 7. 隐私模式 注意没有this
+   function F7(name, age) {
+    this.getName = function() {
+      alert(name);
+    }
+   }
+   var f7 = new F7('小七');
+   f7.getName();
+  </script>
+</body>
+</html>
