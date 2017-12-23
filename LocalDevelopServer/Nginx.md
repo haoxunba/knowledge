@@ -1,5 +1,10 @@
 # Nginx for Window
 
+## Nginx简介
+
+nginx是一款开源的高性能的http服务器和反向代理服务器，也就是说Nginx本身就可以托管网站（类似于Tomcat一样），进行Http服务处理，也可以作为反向代理服务器使用，从而达到网站的负载均衡。
+
+
 阿里技术团队http://tengine.taobao.org/book
 
 `nginx -s stop` 	fast shutdown
@@ -24,6 +29,53 @@
 
 5. 命令行`start nginx`
 
+## Nginx配置反向代理服务器 
+
+
+使用Nginx和Tomcat来搭建高性能负载均衡集群，即使用Nginx的反向代理功能来实现请求的分发
+
+下面的案例是使用tomcat来模拟目标主机，通过nginx搭建反向代理服务器，从而转发请求到真实的tomcat服务器
+
+```
+    upstream tomcatserver1 {  
+      server 192.168.72.49:8081;  
+    }  
+    upstream tomcatserver2 {  
+      server 192.168.72.49:8082;  
+    }  
+    server {  
+      listen       80;  
+      server_name  localhost;  
+
+      #charset koi8-r;  
+
+      #access_log  logs/host.access.log  main;  
+
+      location / {  
+        proxy_pass   http://tomcatserver1;  
+        index  index.html index.htm;  
+      }       
+    }  
+    server {  
+      listen       81;  
+      server_name  localhost;  
+
+      #charset koi8-r;  
+
+      #access_log  logs/host.access.log  main;  
+
+      location / {  
+        proxy_pass   http://tomcatserver2;  
+        index  index.html index.htm;  
+      }          
+    }  
+```
+
+`upstream tomcatserver1` 配置服务器集群， 可以配置多个服务器，通过weight设置不同服务器的权重
+`proxy_pass   http://tomcatserver1` 代理服务器转发请求，后面的就是集群的名字
+
+https://www.cnblogs.com/xingzc/p/5753030.html（里面还详细介绍反向代理服务器的优点）
+
 
 ## FQA
 
@@ -47,7 +99,7 @@
 
 4. 端口被占用 
 
-情形1： 设置8080端口（或其他端口时）会跳转到别的页面，而不跳转到nginx配置的页面，并且nginx没有任何反应，也不会报错；
+情形1： 设置8080端口（或其他端口时）会跳转到别的页面，而不跳转到nginx配置的页面，并且nginx没有任何反应，log文件没有任何信息响应，也不会报错；
 
 情形2： 设置设置8080端口（或其他端口时）访问不到页面，打开error.log可以看到报错错误信息是`bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)`
 
