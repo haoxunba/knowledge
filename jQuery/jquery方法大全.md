@@ -3,7 +3,7 @@
 
 ### DOM Element Methods
 
-`.toArray()` ½«jquery»ñÈ¡µÄDOMÎ±Àà¼¯ºÏ×ªÎªÔ­ÉúDOMÊı×é
+`.toArray()` å°†jqueryè·å–çš„DOMä¼ªç±»é›†åˆè½¬ä¸ºåŸç”ŸDOMæ•°ç»„
 
 ```html
 <!doctype html>
@@ -44,7 +44,7 @@ disp( $( "div" ).toArray().reverse() );
 
 ## .each()
 
-µ±¸øjQueryÀïÃæµÄDOM¶ÔÏó°ó¶¨²»Í¬ÊÂ¼şµÄÊ±ºò£¬¾ÍÓÃµ½each()£¬ÀıÈç
+å½“ç»™jQueryé‡Œé¢çš„DOMå¯¹è±¡ç»‘å®šä¸åŒäº‹ä»¶çš„æ—¶å€™ï¼Œå°±ç”¨åˆ°each()ï¼Œä¾‹å¦‚
 ```
 $("#ulList").children("li").each(function (index,ele) {
        $(ele).fadeTo(1,(index+1)/10);
@@ -55,17 +55,17 @@ $("#ulList").children("li").each(function (index,ele) {
 
 ### extend
 
-#### Óï·¨
+#### è¯­æ³•
 
 `jQuery.extend([deep], target, object1, object2)`
 
-> `[deep]`´ú±íÊÇ·ñÉî¿½±´£¬true´ú±íÉî¿½±´£¬²»Ìî¸Ã²ÎÊıÔòÄ¬ÈÏÇ³¿½±´
+> `[deep]`ä»£è¡¨æ˜¯å¦æ·±æ‹·è´ï¼Œtrueä»£è¡¨æ·±æ‹·è´ï¼Œä¸å¡«è¯¥å‚æ•°åˆ™é»˜è®¤æµ…æ‹·è´
 
-> µÚÒ»¸ö²ÎÊı²»ÄÜ´«false£¬ÒòÎªÒ»µ©´«false¾Í»áÖÕÖ¹ºÏ²¢£¬Ö±½Ó·µ»Ø`target`
+> ç¬¬ä¸€ä¸ªå‚æ•°ä¸èƒ½ä¼ falseï¼Œå› ä¸ºä¸€æ—¦ä¼ falseå°±ä¼šç»ˆæ­¢åˆå¹¶ï¼Œç›´æ¥è¿”å›`target`
 
-> Èç¹û`target` `object1` `object2`´æÔÚÊôĞÔÏàÍ¬µÄÇé¿ö£¬Ò»°ãºóÃæµÄ¸²¸ÇÇ°ÃæµÄ£¬`object2`¸²¸Ç`object1`£¬`object1`¸²¸Ç`target`
+> å¦‚æœ`target` `object1` `object2`å­˜åœ¨å±æ€§ç›¸åŒçš„æƒ…å†µï¼Œä¸€èˆ¬åé¢çš„è¦†ç›–å‰é¢çš„ï¼Œ`object2`è¦†ç›–`object1`ï¼Œ`object1`è¦†ç›–`target`
 
-#### extendÉî¿½±´ÓëÇ³¿½±´Çø±ğ
+#### extendæ·±æ‹·è´ä¸æµ…æ‹·è´åŒºåˆ«
 
 ```
 var object1 = {
@@ -79,7 +79,7 @@ var object2 = {
 };
 ```
 
-ÏÂÃæµÄÊÇÒ»°ãºÏ²¢£¬Ä¬ÈÏÇ³¿½±´
+ä¸‹é¢çš„æ˜¯ä¸€èˆ¬åˆå¹¶ï¼Œé»˜è®¤æµ…æ‹·è´
 
 ```
 // Merge object2 into object1
@@ -90,7 +90,7 @@ console.log(object1);
 
 
 ```
-ÏÂÃæÊÇÉî¿½±´µÄ½á¹û
+ä¸‹é¢æ˜¯æ·±æ‹·è´çš„ç»“æœ
 
 ```
 $.extend( true, object1, object2 );
@@ -99,7 +99,7 @@ console.log(object1);
 //{"apple":0,"banana":{"weight":52,"price":100},"cherry":97}
 ```
 
-ÏÂÃæÊÇ´«ÈëfalseµÄ½á¹û
+ä¸‹é¢æ˜¯ä¼ å…¥falseçš„ç»“æœ
 
 ```
 $.extend( false, object1, object2 );
@@ -108,15 +108,15 @@ console.log(object1);
 //{"apple":0,"banana":{"weight":52,"price":200},"cherry":97,"durian":100}
 ```
 
-#### Ó¦ÓÃ³¡¾°
+#### åº”ç”¨åœºæ™¯
 
-`jQuery.extend(object);`ÎªÀ©Õ¹jQueryÀà±¾Éí.ÎªÀàÌí¼ÓĞÂµÄ·½·¨¡£
+`jQuery.extend(object);`ä¸ºæ‰©å±•jQueryç±»æœ¬èº«.ä¸ºç±»æ·»åŠ æ–°çš„æ–¹æ³•ã€‚
 
 ```
  $.extend({
  hello:function(){alert('hello');}
  });
- //µ÷ÓÃ¾ÍÊÇ$.hello();
+ //è°ƒç”¨å°±æ˜¯$.hello();
 ```
 
 ## Ajax
@@ -125,7 +125,7 @@ console.log(object1);
 
 > As of jQuery 1.9, all the handlers for the jQuery global Ajax events, must be attached to `document`.
 
-ÀıÈç`$(docuemnt).ajaxStart(function() {})`
+ä¾‹å¦‚`$(docuemnt).ajaxStart(function() {})`
 
 > If `$.ajax()` or `$.ajaxSetup()` is called with the global option set to false, the other method will not fire.
 
@@ -133,7 +133,7 @@ console.log(object1);
 
 `jQuery.ajaxSetup({})`
 
-ajax³õÊ¼»¯Ä¬ÈÏÖµ£¬ºóÃæµ¥¶ÀÉèÖÃµÄajax»á¸²¸Ç
+ajaxåˆå§‹åŒ–é»˜è®¤å€¼ï¼Œåé¢å•ç‹¬è®¾ç½®çš„ajaxä¼šè¦†ç›–
 
 >  strongly recommend against using this API
 
@@ -141,21 +141,21 @@ ajax³õÊ¼»¯Ä¬ÈÏÖµ£¬ºóÃæµ¥¶ÀÉèÖÃµÄajax»á¸²¸Ç
 
 `$(document).ajaxStart(fucntion)`
 
-Ö»ÒªÓĞÒ»¸öajax·¢ËÍÇëÇó¾ÍÖ´ĞĞ
+åªè¦æœ‰ä¸€ä¸ªajaxå‘é€è¯·æ±‚å°±æ‰§è¡Œ
 
 #### ajaxStop
 
 `$(document).ajaxStop(fucntion)`
 
-Ò³ÃæÖĞËùÓĞajaxÇëÇóÍê³É£¬Ö´ĞĞstop
+é¡µé¢ä¸­æ‰€æœ‰ajaxè¯·æ±‚å®Œæˆï¼Œæ‰§è¡Œstop
 
 #### ajaxSend
 
 `$(document).ajaxSend(function)`
 
-Ã¿´ÎajaxÇëÇó¶¼»á´¥·¢`ajaxSend`
+æ¯æ¬¡ajaxè¯·æ±‚éƒ½ä¼šè§¦å‘`ajaxSend`
 
-¿ÉÒÔÍ¨¹ı´«²ÎÀ´ÈÃ`ajaxSend`Ã¿´ÎÖ´ĞĞµÄÄÚÈİ²»Í¬
+å¯ä»¥é€šè¿‡ä¼ å‚æ¥è®©`ajaxSend`æ¯æ¬¡æ‰§è¡Œçš„å†…å®¹ä¸åŒ
 > event: event object
 jqxhr: XMLHttpRequest
 settings: Ajax request object
@@ -174,9 +174,9 @@ $(document).ajaxSend(function(event, jqxhr, settings) {
 
 `$(document).ajaxSuccess(function)`
 
-ÕûÌåÃèÊöºÍÉÏÃæµÄ`ajaxSend`ÏàÍ¬
+æ•´ä½“æè¿°å’Œä¸Šé¢çš„`ajaxSend`ç›¸åŒ
 
-Ò²¿ÉÒÔÉèÖÃ`$(document).ajaxSuccess(function(event, xhr, settings, data))`,Ö»²»¹ı±È`ajaxSend`¶àÁËÒ»¸ö²ÎÊı¡£
+ä¹Ÿå¯ä»¥è®¾ç½®`$(document).ajaxSuccess(function(event, xhr, settings, data))`,åªä¸è¿‡æ¯”`ajaxSend`å¤šäº†ä¸€ä¸ªå‚æ•°ã€‚
 
 > You can get the returned Ajax contents by looking at `xhr.responseXML` or `xhr.responseText` for `xml` and `html` respectively.
 
@@ -185,20 +185,20 @@ $(document).ajaxSend(function(event, jqxhr, settings) {
 
 > This handler is not called for cross-domain script and cross-domain JSONP requests.
 
-Ó¦ÓÃÍ¬ÉÏÃæÒ»Ñù£¬Î¨Ò»µÄÇø±ğ¾ÍÊÇ×îºó²ÎÊı
+åº”ç”¨åŒä¸Šé¢ä¸€æ ·ï¼Œå”¯ä¸€çš„åŒºåˆ«å°±æ˜¯æœ€åå‚æ•°
 
 `$(document).ajaxError(function(event, xhr, settings, throwError))`
 
 #### ajaxComplete
 
-Ó¦ÓÃÍ¬ÉÏÃæÒ»Ñù£¬Î¨Ò»µÄÇø±ğ¾ÍÊÇ×îºó²ÎÊı
+åº”ç”¨åŒä¸Šé¢ä¸€æ ·ï¼Œå”¯ä¸€çš„åŒºåˆ«å°±æ˜¯æœ€åå‚æ•°
 
 `$(document).ajaxError(function(event, xhr, settings))`
 
 > You can get the returned Ajax contents by looking at `xhr.responseText.`
 
 
-µ¥¸öajaxÊÂ¼ş¾ÍÊÇ
+å•ä¸ªajaxäº‹ä»¶å°±æ˜¯
 ```
 $('div').ajax{
   beforeSend:{},

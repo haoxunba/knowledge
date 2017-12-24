@@ -1,13 +1,13 @@
 
 ## [jQuery.color](https://github.com/jquery/jquery-color)
 
-�ò������cssHack���`jquery.animate()`���ܸı䱳��ɫ������
+该插件利用cssHack解决`jquery.animate()`不能改变背景色的问题
 
 ```
 
 <body>
     <div>
-        jquery�����Ҫ�ֲ�jquery�������ܸı䱳��ɫ,�ṩһ��cssHack
+        jquery插件主要弥补jquery动画不能改变背景色,提供一种cssHack
     </div>
     <script src="../jquery-3.2.1.js"></script>
     <script src="./jquery.color.js"></script>
@@ -21,14 +21,14 @@
 ```
 ## [jquery.lazyload](https://github.com/tuupola/jquery_lazyload)
 
-�����ز������ȵ�ͼƬ����������Ŀ�������󣬲Ż����ͼƬ
-�����ǲ������ͼƬ�ģ�
+懒加载插件，会等到图片进入浏览器的可视区域后，才会加载图片
+否则，是不会加载图片的！
 
-### data-original����
+### data-original属性
 
-ԭ��������ʵ��ͼƬ·���ŵ��� data-original ������
-lazyload��������ڲ����� data-original ���ԣ��ж����ͼƬ������
-�����������Ὣ data-original ��ֵ������Ϊ ͼƬ��src����
+原理：把真实的图片路径放到了 data-original 属性中
+lazyload插件会在内部解析 data-original 属性，判断如果图片进入了
+可视区域，它会将 data-original 的值，设置为 图片的src属性
 
 ```
 <body>
@@ -43,11 +43,11 @@ lazyload��������ڲ����� data-original ���ԣ��ж����ͼƬ������
 
 </body>
 ```
-> ע�⣺ͼƬ`img`�������óߴ�
+> 注意：图片`img`必须设置尺寸
 
-### ��������
+### 其他属性
 
-�﷨����
+语法就是
 
 ```
  $("img.lazy").lazyload({
@@ -56,27 +56,27 @@ lazyload��������ڲ����� data-original ���ԣ��ж����ͼƬ������
 
 ```
 
-- `placeholder : "img/grey.gif"`, ��ͼƬ��ǰռλ
+- `placeholder : "img/grey.gif"`, 用图片提前占位
 
-    placeholder,ֵΪĳһͼƬ·��.��ͼƬ����ռ�ݽ�Ҫ���ص�ͼƬ��λ��,��ͼƬ����ʱ,ռλͼ�������,������һ���ַ��������÷�������
+    placeholder,值为某一图片路径.此图片用来占据将要加载的图片的位置,待图片加载时,占位图则会隐藏,里面是一个字符串，不用发送请求。
 
-- `effect: "fadeIn"`, ����ʹ�ú���Ч��
+- `effect: "fadeIn"`, 载入使用何种效果
 
-   effect(��Ч),ֵ��show(ֱ����ʾ),fadeIn(����),slideDown(����)��,����fadeIn
+   effect(特效),值有show(直接显示),fadeIn(淡入),slideDown(下拉)等,常用fadeIn
 
-- `threshold: 200`,  ��ǰ��ʼ����
+- `threshold: 200`,  提前开始加载
 
-   threshold,ֵΪ����,����ҳ��߶�.������Ϊ200,��ʾ����������Ŀ��λ�û���200�ĸ߶�ʱ�Ϳ�ʼ����ͼƬ,�������������û����
+   threshold,值为数字,代表页面高度.如设置为200,表示滚动条在离目标位置还有200的高度时就开始加载图片,可以做到不让用户察觉
 
-- `event: 'click'`, �¼�����ʱ�ż���
+- `event: 'click'`, 事件触发时才加载
 
-  event,ֵ��click(���),mouseover(��껮��),sporty(�˶���),foobar(��).����ʵ�����Ī������ͼƬ�ſ�ʼ����,������ֵδ���ԡ�
+  event,值有click(点击),mouseover(鼠标划过),sporty(运动的),foobar(…).可以实现鼠标莫过或点击图片才开始加载,后两个值未测试…
 
-- `container: $("#container")`, ��ĳ�����е�ͼƬʵ��Ч��
+- `container: $("#container")`, 对某容器中的图片实现效果
 
-  container,ֵΪĳ����.lazyloadĬ�������������������ʱ��Ч,���������������������ĳDIV�Ĺ�����ʱ���μ������е�ͼƬ
+  container,值为某容器.lazyload默认在拉动浏览器滚动条时生效,这个参数可以让你在拉动某DIV的滚动条时依次加载其中的图片
 
-- `failurelimit : 10` ͼƬ�������ʱ
+- `failurelimit : 10` 图片排序混乱时
 
-   failurelimit,ֵΪ����.lazyloadĬ�����ҵ���һ�Ų��ڿɼ��������ͼƬʱ���ټ�������,����HTML�������ҵ�ʱ����ܳ��ֿɼ�������ͼƬ��û���س��������,failurelimit���ڼ���N�ſɼ��������ͼƬ,�Ա�������������.
+   failurelimit,值为数字.lazyload默认在找到第一张不在可见区域里的图片时则不再继续加载,但当HTML容器混乱的时候可能出现可见区域内图片并没加载出来的情况,failurelimit意在加载N张可见区域外的图片,以避免出现这个问题.
 
